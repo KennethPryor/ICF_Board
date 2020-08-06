@@ -2,7 +2,7 @@ $(document).ready(function () {
   $('select').formSelect();
 });
 
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyAeFoQZJe8Ah1813JC7J0ey5ODUwDUk3dU",
   authDomain: "icf-board.firebaseapp.com",
   databaseURL: "https://icf-board.firebaseio.com",
@@ -15,6 +15,8 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
+var database = firebase.database();
 
 // Initial Values
 var name = "";

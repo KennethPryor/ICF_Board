@@ -16,7 +16,7 @@ $(document).ready(function () {
 $.holdReady(true);
 
   // Your web app's Firebase configuration
-  const firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyAeFoQZJe8Ah1813JC7J0ey5ODUwDUk3dU",
     authDomain: "icf-board.firebaseapp.com",
     databaseURL: "https://icf-board.firebaseio.com",
