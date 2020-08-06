@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AWK Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+
+<body id="board-body">
+    <div class="row">
+        <div class="col s12" id="col-index">
+            <div class="col s3">
+                <table class="striped board" id="salesperson_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Units Sold</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salesperson_tbody">
+                    </tbody>
+                </table>
+                <table class="striped board" id="total_table">
+                        <thead>
+                            <tr>
+                                <th>Type of Cars</th>
+                                <th>Sold</th>
+                                <th>Tracking</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tracking_board">
+                            <tr>
+                                <td>
+                                    New
+                                </td>
+                                <td id="new-display"></td>
+                                <td id="tracking_new-display"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Used
+                                </td>
+                                <td id="used-display"></td>
+                                <td id="tracking_used-display"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Total
+                                </td>
+                                <td id="total_sold-display"></td>
+                                <td id="tracking_total-display"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="col s9">
+                <table class="striped board" id="daily_board-table">
+                    <thead>
+                        <tr>
+                            <th>Salesperson/s</th>
+                            <th>Customer Name</th>
+                            <th>Stock #</th>
+                            <th>Trade Info</th>
+                        </tr>
+                    </thead>
+                    <tbody id="daily_board-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src="js/constants.js"></script>
+<script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
+
+</html>

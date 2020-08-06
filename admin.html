@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AWK Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+
+<body id="admin-body">
+    <div class="row">
+        <div class="col s12 m6 push-m3">
+            <form class="z-depth-2 form" id="sales_board-form">
+                <h6 class="center">Daily Sales Board Addition</h6>
+                <div class="input-field col s6">
+                    <select id="salesperson-select-daily" class="salesperson-select">
+                        <option value="" disabled selected>Choose your option</option>
+                        </select>
+                        <label>Choose Salesperson</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="John Doe" id="customer_name-input" type="text" class="validate">
+                    <label for="customer_name-input">Customer Name</label>
+                </div>
+                <!-- <div class="input-field col s4">
+                                                <select id="new_or_used-input">
+                                                  <option value="undefined" disabled selected>Choose your option</option>
+                                                  <option value="new">New</option>
+                                                  <option value="used">Used</option>
+                                                </select>
+                                                <label>New or Used</label>
+                                </div> -->
+                <div class="input-field col s6">
+                    <input placeholder="012345" id="stock_num-input" type="text" class="validate">
+                    <label for="stock_num-input">Stock #</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="2015 Kia Optima" id="trade_in-input" type="text" class="validate">
+                    <label for="trade_in-input">Trade-In Info</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" id="add-daily_board" name="action">Add
+                    to
+                    Board</button>
+                <button class="waves-effect waves-light red btn" id="reset_sales_board">Reset Board</button>
+            </form>
+            <div class="col s12 m6">
+                <form class="col s12 z-depth-2 form" id="update_salesperson-form">
+                    <h6 class="center">Update Salesperson Sold Counter</h6>
+                    <div class="input-field col s8">
+                        <select id="salesperson-select-sold" class="salesperson-select">
+                            <option value="" disabled selected>Choose your option</option>
+                        </select>
+                        <label>Choose Salesperson</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input placeholder="# Sold" id="salesperson_sold-update" type="number" class="validate">
+                        <label for="salesperson_sold-update">Total Cars Sold</label>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" id="update-sold-counter" name="action">Update</button>
+                    <!-- <button class="btn waves-effect waves-light tooltipped red" type="button" id="reset-sold-counter"
+                        name="action" data-position="bottom" data-tooltip="Will Reset All Salespersons to 0. Use with Caution!">Reset
+                        Sold Counters</button> -->
+                </form>
+                <form class="col s12 z-depth-2 form" id="update_salesperson-form">
+                    <h6 class="center">Update Salesperson Goal</h6>
+                    <div class="input-field col s8">
+                        <select id="salesperson-select-goal" class="salesperson-select">
+                            <option value="" disabled selected>Choose your option</option>
+                        </select>
+                        <label>Choose Salesperson</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input placeholder="Goal" id="salesperson_goal-update" type="number" class="validate">
+                        <label for="salesperson_goal-update">Goal</label>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" id="update-goal-counter" name="action">Update</button>
+                </form>
+            </div>
+            <form class="col s12 m5 z-depth-2 form" id="sold-form">
+                <h6 class="center">Create Salesperson</h6>
+                <div class="input-field col s12">
+                    <input placeholder="Salesperson Name" id="name-input" type="text" class="validate">
+                    <label for="name-input">Name</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" id="add-user" name="action">Submit</button>
+            </form>
+        </div>
+        <div class="col s12 m3 pull-m6">
+            <table id="col-index" class="striped white">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="tooltipped" data-position="top" data-tooltip="Red: Tracking is less than Goal. Green: Tracking is greater than Goal.">Units
+                            Sold</th>
+                        <th>Goal</th>
+                    </tr>
+                </thead>
+                <tbody id="sp_admin_tbody">
+                </tbody>
+            </table>
+            <table class="striped white" id="total_table">
+                <thead>
+                    <tr>
+                        <th>Type of Cars</th>
+                        <th>Sold</th>
+                        <th>Tracking</th>
+                    </tr>
+                </thead>
+                <tbody id="tracking_board">
+                    <tr>
+                        <td>
+                            New
+                        </td>
+                        <td id="new-display"></td>
+                        <td id="tracking_new-display"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Used
+                        </td>
+                        <td id="used-display"></td>
+                        <td id="tracking_used-display"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Total
+                        </td>
+                        <td id="total_sold-display"></td>
+                        <td id="tracking_total-display"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col s12 m3">
+            <form class="z-depth-2 form" id="update_salesperson-form">
+                <div class="row">
+                    <h6 class="center">New Car Update</h6>
+                    <div class="input-field col s12">
+                        <input placeholder="# of New Cars Sold" id="new_sold-update" type="number" class="validate">
+                        <label for="new_sold-update">New Cars Sold</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" id="update_new-counter">Update</button>
+            </form>
+            <form class="z-depth-2 form" id="update_salesperson-form">
+                <h6 class="center">Used Car Update</h6>
+                <div class="input-field col s12">
+                    <input placeholder="# of Used Cars Sold" id="used_sold-update" type="number" class="validate">
+                    <label for="used_sold-update">Used Cars Sold</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" id="update_used-counter">Update</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="col s12 m6">
+
+    </div>
+    </div>
+    </div>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src="js/constants.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
+
+</html>
