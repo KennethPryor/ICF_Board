@@ -16,19 +16,19 @@ $(document).ready(function () {
 $.holdReady(true);
 
   // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyA-yBlTzATI4ka-1UBCTn_dHYWTBV3g3e4",
-    authDomain: "awk-board-93e81.firebaseapp.com",
-    databaseURL: "https://awk-board-93e81.firebaseio.com",
-    projectId: "awk-board-93e81",
-    storageBucket: "awk-board-93e81.appspot.com",
-    messagingSenderId: "290454024389",
-    appId: "1:290454024389:web:3105b617a373f845"
+  const firebaseConfig = {
+    apiKey: "AIzaSyAeFoQZJe8Ah1813JC7J0ey5ODUwDUk3dU",
+    authDomain: "icf-board.firebaseapp.com",
+    databaseURL: "https://icf-board.firebaseio.com",
+    projectId: "icf-board",
+    storageBucket: "icf-board.appspot.com",
+    messagingSenderId: "312850015698",
+    appId: "1:312850015698:web:93e74a73634a629402140b",
+    measurementId: "G-MKGGWQNM6B"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
-console.log("This was made by Kenneth Pryor and assisted by Jesse Schimmel.");
+  firebase.analytics();
 
 var database = firebase.database();
 
@@ -36,6 +36,8 @@ var trackingBoardRef = database.ref("tracking_board");
 var trackingBoardNewRef = database.ref("tracking_board/new");
 var salespersonRef = database.ref("Salespersons");
 var dailyBoardRef = database.ref("daily_board");
+
+console.log(salespersonRef);
 
 
 var salesBySold = salespersonRef.orderByChild("cars_sold");

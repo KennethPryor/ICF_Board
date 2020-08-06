@@ -1,12 +1,12 @@
 #board-body {
-    background-image: url('images/2020_kia_telluride.jpg');
+    background-image: url('images/2021_bronco.jpg');
     background-size: cover;
     background-repeat: no-repeat;   
     overflow-y: hidden;
 }
 
 #admin-body {
-    background-image: url('images/atlanta_bg.jpg');
+    background-image: url('images/birmingham_bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     
